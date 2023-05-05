@@ -24,7 +24,6 @@ key=APIKEYGOESHERE
 
 [elvenlabs]
 key=APIKEYGOESHERE
-
 ```
 
 Replace "APIKEYGOESHERE" and "APIKEYGOESHERE" with your actual API keys.
