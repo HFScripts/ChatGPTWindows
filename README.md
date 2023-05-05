@@ -7,13 +7,6 @@ This Python script uses the speech_recognition library to record audio from a mi
 ### You MUST install VLC media player 
 - https://www.videolan.org/vlc/
 
-
-- Python 3.9 or later
-- Required Python packages:
-  - speech_recognition
-  - openai
-  - requests
-
 ### Configuration
 
 Before using the script, you will need to set up API keys for the OpenAI and Eleven Labs APIs. To do this, edit the apikeys.txt file with your keys.
