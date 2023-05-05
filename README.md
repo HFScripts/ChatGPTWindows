@@ -19,13 +19,15 @@ Before using the script, you will need to set up API keys for the OpenAI and Ele
 
 ```
 [chatgpt]
-key = YOUR_OPENAI_API_KEY_HERE
+key=APIKEYGOESHERE
+
 
 [elvenlabs]
-key = YOUR_ELEVEN_LABS_API_KEY_HERE
+key=APIKEYGOESHERE
+
 ```
 
-Replace "YOUR_OPENAI_API_KEY_HERE" and "YOUR_ELEVEN_LABS_API_KEY_HERE" with your actual API keys.
+Replace "APIKEYGOESHERE" and "APIKEYGOESHERE" with your actual API keys.
 
 ### Usage
 
