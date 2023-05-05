@@ -62,10 +62,9 @@ Finally it will execute the python script to start listening.
 
 
 ### In the AIvoice.py...
-We have something setup that looks like this:
+We have something setup that looks like this on line "61":
 ```
-        tosend = "respond in a flirtatious fantasy female character accent, never say emotions like giggles." + said
-
+tosend = "respond in a flirtatious fantasy female character accent, never say emotions like giggles." + said
 ```
 - What it does is applies that prefix to everything you ask. Changing it can give you some fun results:
 
