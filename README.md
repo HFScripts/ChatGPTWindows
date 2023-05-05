@@ -2,6 +2,10 @@
 
 This Python script uses the speech_recognition library to record audio from a microphone, uses the OpenAI API to generate a response, and uses the Eleven Labs API to convert the response to an MP3 file and play it through VLC media player.
 
+
+[![Watch the video](https://img.youtube.com/vi/bkOeh8xIMF4/maxresdefault.jpg)](https://www.youtube.com/watch?v=bkOeh8xIMF4)
+
+
 ### Prerequisites
 
 ### You MUST install VLC media player 
