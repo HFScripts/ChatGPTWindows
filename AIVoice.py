@@ -5,25 +5,43 @@ import requests
 import json
 import subprocess
 import sys
+import configparser
 
-# Construct the path to the VLC executable
-vlc_path = os.path.join("C:", os.sep, "Program Files", "VideoLAN", "VLC", "vlc.exe")
+# Construct the path to the VLC executable in "Program Files"
+vlc_path_64 = os.path.join("C:", os.sep, "Program Files", "VideoLAN", "VLC", "vlc.exe")
 
-# Check if VLC is installed
-if not os.path.exists(vlc_path):
+# Construct the path to the VLC executable in "Program Files (x86)"
+vlc_path_32 = os.path.join("C:", os.sep, "Program Files (x86)", "VideoLAN", "VLC", "vlc.exe")
+
+# Check if VLC is installed in either folder
+if not os.path.exists(vlc_path_64) and not os.path.exists(vlc_path_32):
     print("VLC is not installed on this computer.")
     sys.exit()
 
+# Load API keys from file
+config = configparser.ConfigParser()
+config.read("apikeys.txt")
+
+# Check that chatgpt API key is present and not default
+if not config.has_section('chatgpt') or config.get('chatgpt', 'key') == 'APIKEYGOESHERE':
+    print("Please set the chatgpt API key in apikeys.txt file.")
+    sys.exit()
+
+# Check that elvenlabs API key is present
+if not config.has_section('elvenlabs'):
+    print("elvenlabs API key not found in file.")
+    sys.exit()
+
 # Set up OpenAI credentials
-openai.api_key = ""
-elvenlabsapikey = ""
+openai.api_key = config.get('chatgpt', 'key')
+elvenlabsapikey = config.get('elvenlabs', 'key')
 
 # Define the function to get audio and send to OpenAI
 def get_audio():
     # Record audio from microphone
     r = sr.Recognizer()
     with sr.Microphone() as source:
-        print("Say something!")
+        print("Say something! (Prompt is: Ask AI)")
         audio = r.listen(source)
 
     # Convert audio to text using speech recognition library
@@ -71,16 +89,23 @@ def get_audio():
                     f.write(response.content)
                     print("MP3 file saved to:", mp3_file)
                     # Construct the path to the VLC executable
-                    vlc_path = os.path.join("C:", os.sep, "Program Files", "VideoLAN", "VLC", "vlc.exe")
+                    vlc_path = os.path.join("C:", os.sep, "Program Files (x86)", "VideoLAN", "VLC", "vlc.exe")
                     
-                    # Check if VLC is installed
+                    # Check if VLC is installed in "Program Files (x86)"
                     if os.path.exists(vlc_path):
                         # Run VLC with the specified arguments
                         subprocess.call([vlc_path, "-Idummy", "--play-and-exit", "output.mp3"])
                         print("VLC has been run with the specified arguments.")
                     else:
-                        print("VLC is not installed on this computer.")
-                        sys.exit()
+                        # Check if VLC is installed in "Program Files"
+                        vlc_path = os.path.join("C:", os.sep, "Program Files", "VideoLAN", "VLC", "vlc.exe")
+                        if os.path.exists(vlc_path):
+                            # Run VLC with the specified arguments
+                            subprocess.call([vlc_path, "-Idummy", "--play-and-exit", "output.mp3"])
+                            print("VLC has been run with the specified arguments.")
+                        else:
+                            print("VLC is not installed on this computer.")
+                            sys.exit()
                 # Delete the MP3 file
                 os.remove(mp3_file)
             else:
