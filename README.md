@@ -59,3 +59,23 @@ pyaudio
 Finally it will execute the python script to start listening.
 
 - You will need to run the Run.ps1 file every time you wish to start the listener. 
+
+
+### In the AIvoice.py...
+We have something setup that looks like this:
+```
+        tosend = "respond in a flirtatious fantasy female character accent, never say emotions like giggles." + said
+
+```
+- What it does is applies that prefix to everything you ask. Changing it can give you some fun results:
+
+```
+tosend = "respond like a barbarian warrior who has just been injured in battle" + said
+```
+
+- You can also change the voice by editing this line
+```
+https://api.elevenlabs.io/v1/text-to-speech/EXAVITQu4vr4xnSDxMaL/stream?optimize_streaming_latency=0
+```
+Just adjust the token "EXAVITQu4vr4xnSDxMaL" in this case, to a different token from the voice list here:
+- https://api.elevenlabs.io/v1/voices
