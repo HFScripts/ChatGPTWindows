@@ -6,6 +6,26 @@ This Python script uses the speech_recognition library to record audio from a mi
 [![Watch the video](https://img.youtube.com/vi/bkOeh8xIMF4/maxresdefault.jpg)](https://www.youtube.com/watch?v=bkOeh8xIMF4)
 
 
+## Multiple voices and personalities per voice.
+- I have updated the main AIVoice.py file to include personalities and voices for different characters like this
+```
+# Define the names and corresponding Elven Labs URLs
+name_urls = {
+    "Josh": "https://api.elevenlabs.io/v1/text-to-speech/TxGEqnHWrfWFTfGW9XjX/stream?optimize_streaming_latency=0",
+    "Bella": "https://api.elevenlabs.io/v1/text-to-speech/EXAVITQu4vr4xnSDxMaL/stream?optimize_streaming_latency=0",
+    "Rachel": "https://api.elevenlabs.io/v1/text-to-speech/21m00Tcm4TlvDq8ikWAM/stream?optimize_streaming_latency=0"
+}
+
+personalities = {
+    "Josh": "respond in a professional and responsive manner, try to keep things short and accurate.",
+    "Bella": "respond in a flirtatious fantasy female character accent, never say emotions like giggles.",
+    "Rachel": "respond as a mature woman."
+}
+```
+
+- You can freely edit these how you want with different IDs for the voices and personalities to match.
+
+
 ### Prerequisites
 
 ### You MUST install VLC media player 
