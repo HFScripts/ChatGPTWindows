@@ -23,7 +23,14 @@ personalities = {
 }
 ```
 
-- You can freely edit these how you want with different IDs for the voices and personalities to match.
+- You can freely edit these how you want with different IDs for the voices and personalities to match. 
+- You now interact by simply saying:
+1. "Ask Bella tell me a short story" 
+2. "Ask Josh tell me a short story"
+3. "Ask Rachel tell me a short story"
+
+- You can change these names to whatever you would like in the list areas shown above, then those names will be called upon when you speak. Simply changing Josh in both the name_urls and personalities to John for example will let you do:
+1. "Ask John tell me a short story"
 
 
 ### Prerequisites
